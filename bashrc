@@ -14,13 +14,11 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-export EDITOR=vim
 set -o vi
-
+export EDITOR=vim
 export TZ="America/New_York"
-
-# Mac colors
 export CLICOLOR=1
+export PATH=$PATH:/home/chris/bin
 
 # chris@arch:~$ |
 PS1='\u@\h:\w$ '

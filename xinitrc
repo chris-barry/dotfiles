@@ -29,4 +29,6 @@ dwmstatus&
 # Who needs f.lux?
 redshift -c ~/.redshift&
 
+xmodmap ~/.xmodmaprc&
+
 exec /usr/bin/dwm
