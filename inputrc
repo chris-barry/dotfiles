@@ -1,0 +1,14 @@
+## arrow up
+"\e[A":history-search-backward
+
+## arrow down
+"\e[B":history-search-forward
+
+## Vi mode resets this
+"\C-l":clear-screen
+
+## :)
+set editing-mode vi
+
+## Cycle through tab complete options
+"\t": menu-complete

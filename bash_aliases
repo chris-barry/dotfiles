@@ -1,5 +1,5 @@
-# Put aliases here!
-# set some to run in background automatically using &
+#!/bin/bash
+
 alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -31,24 +31,15 @@ to-clipboard() {
 }
 
 system-update() {
-	# Archlinux
-	if [ -x /usr/bin/pacman ]; then
-		sudo pacman -Syu;
-		return;
-	fi
-
-	# Debian
-	if [ -x /usr/bin/apt-get ]; then
-		sudo apt-get update && sudo apt-get upgrade;
-		return;
-	fi
-
-	# Apple
-	if [  -x /usr/sbin/softwareupdate ]; then
+	if [ -x /usr/bin/pacman ]; then # Arch
+		sudo pacman -Syu
+	elif [ -x /usr/bin/apt-get ]; then # Debian
+		sudo apt-get update && sudo apt-get upgrade
+	elif [ -x /usr/sbin/softwareupdate ]; then # Apple
 		sudo softwareupdate -i -a
+	else
+		echo "No package manager found"
 	fi
-
-	echo "No package manager found";
 }
 
 ## Courtesy of https://wiki.archlinux.org/index.php/Bash#Extract
