@@ -33,6 +33,10 @@ cmap w!! %!sudo tee > /dev/null %
 " Open markdown files with proper syntax higlighting
 au BufRead,BufNewFile *.md set filetype=markdown
 
+"Toggle Spell check
+map <F4> :set spell!<cr>
+map <F5> :make<cr>
+
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
 augroup encrypted
