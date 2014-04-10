@@ -37,6 +37,7 @@ system-update() {
 		sudo apt-get update && sudo apt-get upgrade
 	elif [ -x /usr/sbin/softwareupdate ]; then # Apple
 		sudo softwareupdate -i -a
+		return
 	else
 		echo "No package manager found"
 	fi
