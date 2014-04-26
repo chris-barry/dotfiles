@@ -17,8 +17,7 @@ set sig_on_top = yes
 set user_agent=no
 
 # Addresses
-set alias_file = "~/Documents/contacts"
-source $alias_file
+source "gpg -dq /home/chris/.password-store/mutt/contacts.gpg |"
 
 ## Passwords
 set my_gpass=`pass mutt/gmail`
