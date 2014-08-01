@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bash_alises- GNU Bash aliases file.
+# bash_alises - GNU Bash aliases file.
 #
 # Author: Chris Barry <chris@barry.im>
 #
@@ -47,13 +47,13 @@ to-clipboard() {
 }
 
 system-update() {
-	if [ -x /usr/bin/pacman ]; then
+	if [ -x $(which pacman) ]; then
 		# Arch Linux
 		sudo pacman -Syu;
-	elif [ -x /usr/bin/apt-get ]; then
+	elif [ -x $(which apt-get) ]; then
 		# Debian
 		sudo apt-get update && sudo apt-get upgrade;
-	elif [ -x /usr/sbin/softwareupdate ]; then
+	elif [ -x $(which softwareupdate) ]; then
 		# Apple
 		sudo softwareupdate -i -a;
 	else
