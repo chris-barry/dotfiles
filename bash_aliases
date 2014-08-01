@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# bash_alises- GNU Bash aliases file.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
 
 alias ll='ls -AlF'
 alias la='ls -A'
@@ -13,7 +19,6 @@ alias mv='mv -i'
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 alias unmount='umount'
 
-alias dhcp-kill='sudo dhcpcd -k; sudo dhcpcd'
 alias todo='$EDITOR ~/todo.md'
 
 # enable color support of ls and also add handy aliases
@@ -26,21 +31,39 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --line-number --with-filename --color=auto'
 fi
 
+webshare() {
+	# switch 2 and 3.
+	if [ -x $(which python3) ]; then
+		python3 -m http.server
+	elif [ -x $(which python2) ]; then
+		python2 -m SimpleHTTPServer
+	else
+		echo no python 
+	fi
+}
+
 to-clipboard() {
 	cat $1 | xclip -selection clipboard
 }
 
 system-update() {
-	if [ -x /usr/bin/pacman ]; then # Arch
-		sudo pacman -Syu
-	elif [ -x /usr/bin/apt-get ]; then # Debian
-		sudo apt-get update && sudo apt-get upgrade
-	elif [ -x /usr/sbin/softwareupdate ]; then # Apple
-		sudo softwareupdate -i -a
-		return
+	if [ -x /usr/bin/pacman ]; then
+		# Arch Linux
+		sudo pacman -Syu;
+	elif [ -x /usr/bin/apt-get ]; then
+		# Debian
+		sudo apt-get update && sudo apt-get upgrade;
+	elif [ -x /usr/sbin/softwareupdate ]; then
+		# Apple
+		sudo softwareupdate -i -a;
 	else
 		echo "No package manager found"
 	fi
+}
+
+# Make a file into 'L' and 'O', corresponding to the binary of the file.
+lulcryption() {
+	xxd -b $1 | cut -b 10-62 | tr -d ' ' | tr -d '\n' | tr '0' 'O' | tr '1' 'L' > $2
 }
 
 ## Courtesy of https://wiki.archlinux.org/index.php/Bash#Extract
