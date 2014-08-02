@@ -33,9 +33,9 @@ fi
 
 webshare() {
 	# switch 2 and 3.
-	if [ -x $(which python3) ]; then
+	if [ -x "$(which python3)" ]; then
 		python3 -m http.server
-	elif [ -x $(which python2) ]; then
+	elif [ -x "$(which python2)" ]; then
 		python2 -m SimpleHTTPServer
 	else
 		echo no python 
@@ -47,13 +47,13 @@ to-clipboard() {
 }
 
 system-update() {
-	if [ -x $(which pacman) ]; then
+	if [ -x "$(which pacman)" ]; then
 		# Arch Linux
 		sudo pacman -Syu;
-	elif [ -x $(which apt-get) ]; then
+	elif [ -x "$(which apt-get)" ]; then
 		# Debian
 		sudo apt-get update && sudo apt-get upgrade;
-	elif [ -x $(which softwareupdate) ]; then
+	elif [ -x "$(which softwareupdate)" ]; then
 		# Apple
 		sudo softwareupdate -i -a;
 	else
