@@ -1,4 +1,11 @@
 #!/bin/sh
+#
+# xinitrc - Start up X window session.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
+
 eval $(gpg-agent --daemon --enable-ssh-support --write-env-file ${HOME}/.gnupg/gpg-agent.env)&
 
 # No trackpad tapping

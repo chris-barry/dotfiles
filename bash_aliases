@@ -18,8 +18,7 @@ alias mv='mv -i'
 # Send to a pastebin site with, $ cat [file] |sprunge
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 alias unmount='umount'
-
-alias todo='$EDITOR ~/todo.md'
+alias todo='$EDITOR -p ~/todo.md ~/done.md'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -32,13 +31,12 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 webshare() {
-	# switch 2 and 3.
 	if [ -x "$(which python3)" ]; then
 		python3 -m http.server
 	elif [ -x "$(which python2)" ]; then
 		python2 -m SimpleHTTPServer
 	else
-		echo no python 
+		>&2 echo "It does not look like Python is installed."
 	fi
 }
 
@@ -48,16 +46,13 @@ to-clipboard() {
 
 system-update() {
 	if [ -x "$(which pacman)" ]; then
-		# Arch Linux
 		sudo pacman -Syu;
 	elif [ -x "$(which apt-get)" ]; then
-		# Debian
 		sudo apt-get update && sudo apt-get upgrade;
 	elif [ -x "$(which softwareupdate)" ]; then
-		# Apple
 		sudo softwareupdate -i -a;
 	else
-		echo "No package manager found"
+		>&2 echo "No package manager found"
 	fi
 }
 

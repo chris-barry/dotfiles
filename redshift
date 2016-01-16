@@ -1,3 +1,9 @@
+; redshift - Redshift configuration.
+;
+; Author: Chris Barry <chris@barry.im>
+;
+; License: Public domain.
+
 ; Global settings
 [redshift]
 location-provider=manual

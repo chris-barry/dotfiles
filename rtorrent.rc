@@ -1,5 +1,10 @@
-# rtorrent config file
-# http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.html
+# rtorrentrc - rtorrent configuration file.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
+#
+# See also: <http://libtorrent.rakshasa.no/rtorrent/rtorrent.1.htm>
 
 session = ~/.watch/session
 
