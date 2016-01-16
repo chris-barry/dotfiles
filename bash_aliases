@@ -9,7 +9,6 @@
 alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF'
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ..='cd ..'
 # Check to make sure I actully want to do it
 alias rm='rm -i'
@@ -18,7 +17,7 @@ alias mv='mv -i'
 # Send to a pastebin site with, $ cat [file] |sprunge
 #alias sprunge='curl -F \'sprunge=<-\' http://sprunge.us'
 alias unmount='umount'
-alias todo='$EDITOR -p ~/todo.md ~/done.md'
+alias todo='$EDITOR -p ~/Documents/notes/todo.md ~/Documents/notes/done.md'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -32,9 +31,9 @@ fi
 
 webshare() {
 	if [ -x "$(which python3)" ]; then
-		python3 -m http.server
+		python3 -m http.server $1
 	elif [ -x "$(which python2)" ]; then
-		python2 -m SimpleHTTPServer
+		python2 -m SimpleHTTPServer $1
 	else
 		>&2 echo "It does not look like Python is installed."
 	fi
@@ -60,41 +59,3 @@ system-update() {
 lulcryption() {
 	xxd -b $1 | cut -b 10-62 | tr -d ' ' | tr -d '\n' | tr '0' 'O' | tr '1' 'L' > $2
 }
-
-## Courtesy of https://wiki.archlinux.org/index.php/Bash#Extract
-extract() {
-	local c e i
-
-	(($#)) || return
-
-	for i; do
-		c=''
-		e=1
-
-		if [[ ! -r $i ]]; then
-			echo "$0: file is unreadable: \`$i'" >&2
-			continue
-		fi
-
-		case $i in
-			*.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
-				c='bsdtar xvf';;
-			*.7z)  c='7z x';;
-			*.Z)   c='uncompress';;
-			*.bz2) c='bunzip2';;
-			*.exe) c='cabextract';;
-			*.gz)  c='gunzip';;
-			*.rar) c='unrar x';;
-			*.xz)  c='unxz';;
-			*.zip) c='unzip';;
-			*)     echo "$0: unrecognized file extension: \`$i'" >&2
-				continue;;
-		esac
-
-		command $c "$i"
-		e=$?
-	done
-
-	return $e
-}
-
