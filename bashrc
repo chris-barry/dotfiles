@@ -1,4 +1,8 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# bashrc - GNU Bash configuration file.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

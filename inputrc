@@ -1,14 +1,20 @@
-## arrow up
+# inputrc - Readline configuration.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
+
+# Arrow up.
 "\e[A":history-search-backward
 
-## arrow down
+## Arrow down.
 "\e[B":history-search-forward
 
-## Vi mode resets this
+## Vi mode resets this.
 "\C-l":clear-screen
 
 ## :)
 set editing-mode vi
 
-## Cycle through tab complete options
+## Cycle through tab complete options.
 "\t": menu-complete

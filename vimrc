@@ -1,3 +1,9 @@
+" vimrc - Configuration for vim.
+"
+" Author: Chris Barry <chris@barry.im>
+"
+" License: Public domain.
+
 set encoding=utf-8
 set autoindent
 syntax on

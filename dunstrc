@@ -1,3 +1,9 @@
+# dunstrc - Dunst configuration file
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
+
 [global]
     font = terminus 14
     allow_markup = yes

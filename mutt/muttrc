@@ -1,5 +1,8 @@
-# Settings for Chris Barry's mutt
-# 2013-04-12
+# muttrc - Settings for mutt.
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
 
 set header_cache = "~/.cache/mutt"
 set imap_check_subscribed

@@ -1,3 +1,9 @@
+# gitconfig - Git configuration file
+#
+# Author: Chris Barry <chris@barry.im>
+#
+# License: Public domain.
+
 [user]
 	email = chris@barry.im
 	name = Chris Barry

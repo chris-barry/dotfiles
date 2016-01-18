@@ -1,3 +1,10 @@
+/* indent.pro - Indent configuration file.
+ * 
+ * Author: Chris Barry <chris@barry.im>
+ *
+ * License: Public domain.
+ */
+
 -bap
 -bli0
 -i4
