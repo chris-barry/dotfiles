@@ -41,8 +41,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Alias definitions for monotone.
-if [ -f ~/.monotone.sh ]; then
-    . ~/.monotone.sh
+if [ -f ~/.monotone_aliases ]; then
+    . ~/.monotone_aliases
 fi
 
 # Other random stuff that might be unique per host.

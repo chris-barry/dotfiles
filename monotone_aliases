@@ -1,0 +1,70 @@
+#!/bin/sh
+# monotone.sh - Because monotone sucks
+# Author: Chris Barry <chris@barry.im>
+# License: Public domain.
+#
+# By default monotone kinda sucks and doesn't work like you think it should.
+# These wrapper functions make it behave more like git, kinda.
+# Reference: https://geti2p.net/en/get-involved/guides/monotone
+#
+# Changelog:
+#   2015-11-11: Initial public posting.
+#   2015-11-13: Lots of cleanups, should be mostly working now.
+#   2015-11-15: Add mtn-pull-all().
+#   2016-01-24: Fix mtn-pull-all(), it now updates also.
+#   2016-02-01: Add mtn-merge().
+###############################################################################
+
+DB=i2p.mtn
+SERVER=mtn://127.0.0.1:8998
+#SERVER=mtn://mtn.i2p-projekt.de
+USERNAME=lazygravy@mail.i2p
+USERNAME_TRANSPORT=lazygravy-transport@mail.i2p
+
+mtn-pull() {
+	mtn pull --update --db="../$DB" -k "" "$SERVER?$(basename $(pwd))";
+}
+
+mtn-pull-all() {
+	WORKSPACE=$(find . -maxdepth 1 -type d -name 'i2p.*' | xargs -I {} echo '{}' | cut -c 3- | tr '\n' ';');
+	mtn pull --update --db="$DB" -k "" "$SERVER?$WORKSPACE"
+}
+
+mtn-commit() {
+	mtn commit -k "$USERNAME" $@;
+}
+
+mtn-merge() {
+	mtn-merge -k "$USERNAME";
+}
+
+mtn-push() {
+	mtn push -k "$USERNAME_TRANSPORT" "$SERVER?$(basename $(pwd))";
+}
+
+mtn-init() {
+	mtn db init --db="$DB";
+}
+
+mtn-clone() {
+	mtn clone -k "" "$SERVER?$1";
+}
+
+mtn-log() {
+	mtn log | less;
+}
+
+mtn-diff() {
+	mtn diff | less;
+}
+
+mtn-import-keys() {
+	mtn --db="$DB" read < keys.txt;
+}
+
+# undo one commit -- http://zzz.i2p/topics/764
+mtn-undo() {
+	mtn up -r p:;
+	mtn local kill_revision h:;
+}
+
