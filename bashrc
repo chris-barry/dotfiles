@@ -1,7 +1,5 @@
 # bashrc - GNU Bash configuration file.
-#
 # Author: Chris Barry <chris@barry.im>
-#
 # License: Public domain.
 
 # If not running interactively, don't do anything
@@ -22,7 +20,7 @@ set -o vi
 export EDITOR=vim
 export TZ="America/New_York"
 export CLICOLOR=1
-export PATH=$PATH:/home/chris/bin
+export PATH=$PATH:~/bin
 
 # chris@arch:~$ |
 PS1='\u@\h:\w$ '
@@ -40,6 +38,16 @@ shopt -s checkwinsize
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# Alias definitions for monotone.
+if [ -f ~/.monotone.sh ]; then
+    . ~/.monotone.sh
+fi
+
+# Other random stuff that might be unique per host.
+if [ -f ~/.chris_custom ]; then
+    . ~/.chris_custom
 fi
 
 # Enable gpg-agent
