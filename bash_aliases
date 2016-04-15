@@ -47,7 +47,7 @@ system-update() {
 	if [ -x "$(which pacman)" ]; then
 		sudo pacman -Syu;
 	elif [ -x "$(which apt-get)" ]; then
-		sudo apt-get update && sudo apt-get upgrade;
+		sudo apt update && sudo apt upgrade;
 	elif [ -x "$(which softwareupdate)" ]; then
 		sudo softwareupdate -i -a;
 	else
