@@ -59,3 +59,9 @@ system-update() {
 lulcryption() {
 	xxd -b $1 | cut -b 10-62 | tr -d ' ' | tr -d '\n' | tr '0' 'O' | tr '1' 'L' > $2
 }
+
+# sshfs-unmount mount/
+sshfs-unmount() {
+       fusermount -u $1
+}
+
