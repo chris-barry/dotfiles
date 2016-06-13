@@ -46,8 +46,8 @@ if [ -f ~/.monotone_aliases ]; then
 fi
 
 # Other random stuff that might be unique per host.
-if [ -f ~/.chris_custom ]; then
-    . ~/.chris_custom
+if [ -f ~/.chris_custom.sh ]; then
+    . ~/.chris_custom.sh
 fi
 
 # Enable gpg-agent
