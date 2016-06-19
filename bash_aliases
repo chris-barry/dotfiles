@@ -65,3 +65,8 @@ sshfs-unmount() {
        fusermount -u $1
 }
 
+# youtube-dl-music https://youtube.com/watch?v=xxx
+youtube-dl-music() {
+	youtube-dl --extract-audio --audio-format mp3 $1
+}
+
