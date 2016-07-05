@@ -70,3 +70,10 @@ youtube-dl-music() {
 	youtube-dl --extract-audio --audio-format mp3 $1
 }
 
+work-vpn() {
+	if [ ! -f ~/.csd.sh ]; then
+		>&2 echo "csd.sh not found"
+		return
+	fi
+	sudo openconnect --csd-wrapper ~/.csd.sh $1
+}
